@@ -10,7 +10,7 @@ const createNewHistory = async (req, res) => {
   }
 };
 
-////
+//////
 
 const getAllHistorys = async (req, res) => {
   try {
