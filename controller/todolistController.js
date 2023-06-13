@@ -23,7 +23,6 @@ const getAllTodos = async (req, res) => {
 
 const getOneTodos = async (req, res) => {
   try {
-
     const { id } = req.params;
     const todos = await todoListModel.findOne({ _id: id });
     return res.status(200).json(todos);
@@ -34,7 +33,6 @@ const getOneTodos = async (req, res) => {
 
 const deleteTodo = async (req, res) => {
   try {
-
     const { id } = req.params;
     const todos = await todoListModel.findOneAndDelete({ _id: id });
     return res.status(200).json(todos);
@@ -45,8 +43,7 @@ const deleteTodo = async (req, res) => {
 
 const updateTodo = async (req, res) => {
   try {
-
-    const { id: _id } = req.params;
+    const { id } = req.params;
     const newCourseData = req.body;
 
     const todos = await todoListModel.findByIdAndUpdate(
@@ -67,4 +64,3 @@ module.exports = {
   deleteTodo,
   updateTodo,
 };
-
