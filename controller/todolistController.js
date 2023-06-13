@@ -45,10 +45,9 @@ const updateTodo = async (req, res) => {
   try {
     const { id } = req.params;
     const newCourseData = req.body;
-
     const todos = await todoListModel.findByIdAndUpdate(
-      _id,
-      { ...newCourseData, _id },
+      id,
+      { ...newCourseData },
       { new: true }
     );
     return res.status(200).json(todos);
