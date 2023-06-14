@@ -10,8 +10,8 @@ const TodoListSchema = new Schema({
     maxlength: [50, "please inter 50 characters"],
   },
   manager: {
-    type: String,
-    maxlength: [50, "please inter maximom 50 charachter"],
+    type: Array,
+    // maxlength: [5, "please inter maximom 50 charachter"],
     require: [true, "manager is require"],
   },
   createdOn: { type: Date, default: Date.now },
