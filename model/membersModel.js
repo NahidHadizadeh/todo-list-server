@@ -39,7 +39,8 @@ const MembersSchema = new Schema({
     minlength: [1, "language is 1 or more item"],
   },
   imageFile: {
-    type: Object,
+    type: String,
+
     // require: [true, "image is require"],
   },
   admin: {
@@ -54,6 +55,9 @@ const MembersSchema = new Schema({
   tasks: {
     type: Array,
     default: [],
+  },
+  bgColor: {
+    type: Number,
   },
 });
 
