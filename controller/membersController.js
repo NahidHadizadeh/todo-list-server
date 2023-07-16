@@ -4,7 +4,8 @@ const createNewMember = async (req, res) => {
   try {
     const newMember = req.body;
     const member = await membersModal.create(newMember);
-    return res.status(200).json(member);
+    const AllMembers = await membersModal.find({});
+    return res.json(AllMembers);
   } catch (err) {
     return res.status(500).json({ msg: { err } });
   }
@@ -52,7 +53,14 @@ const updateMember = async (req, res) => {
       { ...newCourseData, _id },
       { new: true }
     );
-    return res.status(200).json(members);
+    if (!members)
+      return res
+        .status(204)
+        .json({ message: `No matches member with id:${id}` });
+    // -------------- get AllTasks after update for rerender page
+    const allMembers = await membersModal.find({});
+    return res.json(allMembers);
+    // return res.status(200).json(members);
   } catch (error) {
     res.status(500).json({ msg: error });
   }
