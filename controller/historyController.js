@@ -4,7 +4,13 @@ const createNewHistory = async (req, res) => {
   try {
     const newHistory = req.body;
     const history = await historyModel.create(newHistory);
-    return res.status(200).json(history);
+    if (!history) {
+      return res
+        .status(204)
+        .json({ message: `${newHistory.title} is not create` });
+    }
+    const AllHistory = await historyModel.find({});
+    return res.status(200).json(AllHistory);
   } catch (err) {
     return res.status(500).json({ msg: { err } });
   }
