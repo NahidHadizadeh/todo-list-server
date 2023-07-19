@@ -25,7 +25,8 @@ const deleteHistory = async (req, res) => {
   try {
     // const { id } = req.params;
     const history = await historyModel.deleteMany({});
-    return res.status(200).json(history);
+    const AllHistory = await historyModel.find({});
+    return res.status(200).json(AllHistory);
   } catch (error) {
     res.status(500).json({ msg: error });
   }
